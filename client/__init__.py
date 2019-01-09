@@ -1,1 +1,1 @@
-from .client import ArkClient  # noqa
+from .client import PhantomClient  # noqa

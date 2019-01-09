@@ -2,7 +2,7 @@ import json
 
 import responses
 
-from client import ArkClient
+from client import PhantomClient
 
 
 def test_all_calls_correct_url_with_default_params():
@@ -13,7 +13,7 @@ def test_all_calls_correct_url_with_default_params():
         status=200
     )
 
-    client = ArkClient('http://127.0.0.1:4002')
+    client = PhantomClient('http://127.0.0.1:4002')
     client.blocks.all()
     assert len(responses.calls) == 1
     assert responses.calls[0].request.url == 'http://127.0.0.1:4002/blocks?limit=100'
@@ -27,7 +27,7 @@ def test_all_calls_correct_url_with_passed_in_params():
         status=200
     )
 
-    client = ArkClient('http://127.0.0.1:4002')
+    client = PhantomClient('http://127.0.0.1:4002')
     client.blocks.all(page=5, limit=69)
     assert len(responses.calls) == 1
     assert responses.calls[0].request.url.startswith('http://127.0.0.1:4002/blocks?')
@@ -43,7 +43,7 @@ def test_all_calls_correct_url_with_additional_params():
       status=200
     )
 
-    client = ArkClient('http://127.0.0.1:4002')
+    client = PhantomClient('http://127.0.0.1:4002')
     client.blocks.all(page=5, limit=69, orderBy="timestamp.epoch", height=6838329)
     assert len(responses.calls) == 1
     assert responses.calls[0].request.url.startswith('http://127.0.0.1:4002/blocks?')
@@ -62,7 +62,7 @@ def test_get_calls_correct_url():
         status=200
     )
 
-    client = ArkClient('http://127.0.0.1:4002')
+    client = PhantomClient('http://127.0.0.1:4002')
     client.blocks.get(block_id)
 
     assert len(responses.calls) == 1
@@ -78,7 +78,7 @@ def test_transactions_calls_correct_url_with_default_params():
         status=200
     )
 
-    client = ArkClient('http://127.0.0.1:4002')
+    client = PhantomClient('http://127.0.0.1:4002')
     client.blocks.transactions(block_id)
     assert len(responses.calls) == 1
     assert responses.calls[0].request.url == (
@@ -95,7 +95,7 @@ def test_transactions_calls_correct_url_with_passed_in_params():
         status=200
     )
 
-    client = ArkClient('http://127.0.0.1:4002')
+    client = PhantomClient('http://127.0.0.1:4002')
     client.blocks.transactions(block_id, page=5, limit=69)
     assert len(responses.calls) == 1
     assert responses.calls[0].request.url.startswith(
@@ -113,7 +113,7 @@ def test_search_calls_correct_url_with_default_params():
         status=200
     )
 
-    client = ArkClient('http://127.0.0.1:4002')
+    client = PhantomClient('http://127.0.0.1:4002')
     client.blocks.search({'previousBlock': '1337'})
     assert len(responses.calls) == 1
     assert responses.calls[0].request.url == 'http://127.0.0.1:4002/blocks/search?limit=100'
@@ -128,7 +128,7 @@ def test_search_calls_correct_url_with_passed_in_params():
         status=200
     )
 
-    client = ArkClient('http://127.0.0.1:4002')
+    client = PhantomClient('http://127.0.0.1:4002')
     client.blocks.search({'previousBlock': '1337'}, page=5, limit=69)
     assert len(responses.calls) == 1
     assert responses.calls[0].request.url.startswith('http://127.0.0.1:4002/blocks/search?')

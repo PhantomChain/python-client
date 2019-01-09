@@ -1,13 +1,13 @@
 
-class ArkException(Exception):
+class PhantomException(Exception):
     pass
 
 
-class ArkParameterException(ArkException):
+class PhantomParameterException(PhantomException):
     pass
 
 
-class ArkHTTPException(ArkException):
+class PhantomHTTPException(PhantomException):
 
     def __init__(self, *args, **kwargs):
         self.response = kwargs.pop('response', None)

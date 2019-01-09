@@ -27,12 +27,12 @@ extras_require = {
 setup_requires = ['pytest-runner'] if {'pytest', 'test', 'ptr'}.intersection(sys.argv) else []
 
 setuptools.setup(
-    name='arkecosystem-client',
-    description='A simple Python API client for the ARK Blockchain.',
+    name='phantomchain-client',
+    description='A simple Python API client for the PHANTOM Blockchain.',
     version='1.0.0',
-    author='Ark Ecosystem',
+    author='PhantomChain',
     author_email='info@client.io',
-    url='https://github.com/ArkEcosystem/python-client',
+    url='https://github.com/PhantomChain/python-client',
     packages=setuptools.find_packages(exclude=['tests', 'tests.*']),
     install_requires=requires,
     extras_require=extras_require,

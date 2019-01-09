@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.6.1
-    working_directory: ~/arkecosystem/client
+    working_directory: ~/phantomchain/client
     steps:
       - checkout
       - run:
@@ -17,7 +17,7 @@ jobs:
           command: |
             . venv/bin/activate
             mkdir test-results
-            pytest -v -s --junitxml=test-reports/junit.xml --cov=ark --cov-config=.coveragerc --cov-report xml
+            pytest -v -s --junitxml=test-reports/junit.xml --cov=phantom --cov-config=.coveragerc --cov-report xml
       - run:
           name: Codecov
           when: on_success
